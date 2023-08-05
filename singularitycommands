@@ -1,0 +1,5 @@
+# Build
+sudo singularity build fdm.sif fdm.def                                        
+
+# Run test
+singularity run fdm.sif test.py

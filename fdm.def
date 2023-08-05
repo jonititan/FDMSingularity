@@ -1,0 +1,20 @@
+Bootstrap: docker
+From: ubuntu:18.04
+
+%post -c /bin/bash
+
+    apt-get update && apt-get upgrade -y
+
+    apt-get install -y wget
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/conda
+
+    . /opt/conda/etc/profile.d/conda.sh
+    conda create --name fdm intel::mpi4py conda-forge::dask-mpi
+    conda activate fdm
+    python3 -m pip install -U prefect
+    conda install -c conda-forge geopandas geopy geojson folium scikit-learn overpy movingpandas
+
+%runscript
+    exec /bin/bash -c ". /opt/conda/etc/profile.d/conda.sh; conda activate fdm; python $@"
+
