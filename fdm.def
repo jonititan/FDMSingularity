@@ -10,7 +10,7 @@ From: ubuntu:18.04
     bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/conda
 
     . /opt/conda/etc/profile.d/conda.sh
-    conda create --name fdm intel::mpi4py conda-forge::dask-mpi conda-forge::prefect conda-forge::prefect-dask
+    conda create --name fdm intel::mpi4py conda-forge::dask-mpi conda-forge::prefect conda-forge::prefect-dask bokeh>=2.4.2
     conda activate fdm
     conda install -c conda-forge geopandas geopy geojson folium scikit-learn overpy movingpandas
 
