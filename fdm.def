@@ -2,7 +2,7 @@ Bootstrap: docker
 From: nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04
 
 %environment
-    export SINGULARITY_BIND="~/src:/headless"
+
     export DEFAULTHOME="/headless" 
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH
     export NUMBA_CUDA_ENABLE_MINOR_VERSION_COMPATIBILITY=1
@@ -11,14 +11,14 @@ From: nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04
 
 %post -c /bin/bash
 
-    apt-get update && apt-get upgrade -y && apt-get install -y wget ffmpeg && wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && bash Miniconda3-latest-Linux-x86_64.sh -b -p /headless/conda
+    apt-get update && apt-get upgrade -y && apt-get install -y wget ffmpeg && wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/conda
 
-    . /headless/conda/etc/profile.d/conda.sh; conda update conda; conda create --name fdm intel::mpi4py conda-forge::dask-mpi conda-forge::prefect conda-forge::prefect-dask bokeh>=2.4.2; conda activate fdm; conda install -c rapidsai -c nvidia -c conda-forge dask-cuda; conda install -c conda-forge geopandas geopy geojson folium scikit-learn overpy movingpandas stonesoup tqdm xarray netCDF4 bottleneck; python -m pip install singularity-compose imageio[ffmpeg] rioxarray gemgis==1.1.0 geovista owslib pyvista meshio georasters openpyxl
+    . /opt/conda/etc/profile.d/conda.sh; conda update conda; conda create --name fdm intel::mpi4py conda-forge::dask-mpi conda-forge::prefect conda-forge::prefect-dask bokeh>=2.4.2; conda activate fdm; conda install -c rapidsai -c nvidia -c conda-forge dask-cuda; conda install -c conda-forge geopandas geopy geojson folium scikit-learn overpy movingpandas stonesoup tqdm xarray netCDF4 bottleneck; python -m pip install singularity-compose imageio[ffmpeg] rioxarray gemgis==1.1.0 geovista owslib pyvista meshio georasters openpyxl
 
 
 %runscript
-    exec /bin/bash -c ". /headless/conda/etc/profile.d/conda.sh; conda activate fdm; python $@"
+    exec /bin/bash -c ". /opt/conda/etc/profile.d/conda.sh; conda activate fdm; python $@"
 
 %startscript
-    exec /bin/bash -c ". /headless/conda/etc/profile.d/conda.sh; conda activate fdm"
+    exec /bin/bash -c ". /opt/conda/etc/profile.d/conda.sh; conda activate fdm"
 

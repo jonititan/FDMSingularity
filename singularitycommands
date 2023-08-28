@@ -2,4 +2,4 @@
 sudo singularity build fdm.sif fdm.def                                        
 
 # Run test
-singularity run fdm.sif test.py
+singularity run --bind ${PWD}/src:/headless fdm.sif test.py
