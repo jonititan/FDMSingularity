@@ -13,7 +13,15 @@ To build the singularity images
 ```
   
 To use
-1. Start postgres server instance
+1. Create the folders needed
+```
+  $ mkdir pgrun
+```
+```
+  $ mkdir pgdata
+```
+
+2. Start postgres server instance
 
 Reference command for docker from [Prefect Docs](https://docs.prefect.io/2.10.3/concepts/database/#configuring-a-postgresql-database)
 
@@ -29,7 +37,7 @@ To access the instance
   $ singularity shell -s /bin/bash instance://prefect-postgres
 ```
 
-1. Run test
+3. Run test
 ```
   $ singularity run fdm.sif test.py
 ```

@@ -7,5 +7,4 @@
 pgdata/*
 pgrun/*
 
-!pgdata/.gitkeep 
-!pgrun/.gitkeep 
+
