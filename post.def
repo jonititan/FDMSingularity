@@ -8,6 +8,6 @@ From: postgres:alpine
     export HOSTNAME=localhost
 
 %startscript
-    postgres -h $HOSTNAME -D /var/lib/postgresql/data 
+    /usr/local/bin/docker-entrypoint.sh postgres -h $HOSTNAME 
 
 

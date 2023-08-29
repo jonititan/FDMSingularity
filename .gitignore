@@ -4,3 +4,8 @@
 *.toml
 *.db
 *.prefect
+pgdata/*
+pgrun/*
+
+!pgdata/.gitkeep 
+!pgrun/.gitkeep 

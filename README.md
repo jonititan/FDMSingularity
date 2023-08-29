@@ -21,7 +21,7 @@ docker run -d --name prefect-postgres -v prefectdb:/var/lib/postgresql/data -p 5
 
 our command
 ```
-  $ singularity instance start --cleanenv --containall --writable-tmpfs --bind ${PWD}/postgres:/var/lib/postgresql/data post.sif prefect-postgres
+  $ singularity instance start -B pgdata:/var/lib/postgresql/data -B pgrun:/var/run/postgresql -e -C --env-file post.envs post.sif  prefect-postgres
 ```
 
 To access the instance
@@ -29,7 +29,7 @@ To access the instance
   $ singularity shell -s /bin/bash instance://prefect-postgres
 ```
 
-2. Run test
+1. Run test
 ```
-  $ singularity run --bind ${PWD}/src:/headless fdm.sif test.py
+  $ singularity run fdm.sif test.py
 ```
