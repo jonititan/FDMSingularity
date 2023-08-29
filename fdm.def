@@ -8,6 +8,8 @@ From: nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04
     export NUMBA_CUDA_ENABLE_MINOR_VERSION_COMPATIBILITY=1
     export PATH=/opt/conda/bin:${PATH}
     export PREFECT_HOME='/headless/.prefect'
+    export PREFECT_API_DATABASE_CONNECTION_URL="postgresql+asyncpg://postgres:yourTopSecretPassword@localhost:5432/prefect"
+
 
 %post -c /bin/bash
 

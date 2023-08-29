@@ -1,0 +1,13 @@
+BootStrap: docker
+From: postgres:alpine
+
+# https://github.com/verysure/postgres-alpine
+
+
+%environment
+    export HOSTNAME=localhost
+
+%startscript
+    postgres -h $HOSTNAME -D /var/lib/postgresql/data 
+
+

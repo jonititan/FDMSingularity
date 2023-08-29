@@ -1,0 +1,2 @@
+POSTGRES_PASSWORD=yourTopSecretPassword 
+POSTGRES_DB=prefect

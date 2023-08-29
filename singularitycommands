@@ -1,5 +1,0 @@
-# Build
-sudo singularity build fdm.sif fdm.def                                        
-
-# Run test
-singularity run --bind ${PWD}/src:/headless fdm.sif test.py
