@@ -24,7 +24,7 @@ our command
   $ singularity instance start --cleanenv --containall --writable-tmpfs --bind ${PWD}/postgres:/var/lib/postgresql/data post.sif prefect-postgres
 ```
 
-# to access the instance
+To access the instance
 ```
   $ singularity shell -s /bin/bash instance://prefect-postgres
 ```
