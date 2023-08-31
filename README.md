@@ -12,7 +12,7 @@ To build the singularity images
   $ sudo singularity build post.sif post.def 
 ```
   
-To use as a single script
+## To use as a single script
 1. Create the folders needed
 ```
   $ mkdir pgrun
@@ -43,7 +43,7 @@ To access the instance
 ```
 
 
-To use as a prefect server
+## To use as a prefect server
 1. Create the folders needed
 ```
   $ mkdir pgrun
@@ -89,14 +89,24 @@ To access the instance
   $ prefect server start
 
 ```
-7. Run test
-   
-In a seperate terminal you can then run you scripts as normal and the server instance will be [serving you a dashboard](https://docs.prefect.io/2.11.5/guides/host/) where you can monitor progress.
+
+## Running on a HPC system with PBS
+Add the following to your PBS script.
 ```
-  $ singularity run fdm.sif test.py
+mkdir pgdata
+
+mkdir pgrun
+
+singularity instance start -B pgdata:/var/lib/postgresql/data -B pgrun:/var/run/postgresql -e -C --env-file post.envs post.sif  prefect-postgres
+
+singularity run -B $HOME --env HOSTNAME=$PBS_NODEFILE fdm.sif nongputest.py
+
+singularity instance stop --all
+
+rm -rf pgdata 
+
+rm -rf pgrun
 ```
 
-
-Errata
-
+## Errata
 If you have GPU's you wish to include or your code needs them numba and dask-cuda are included in the fdm image and you can enable gpu pass through by including the --nv flag when you launch via "run" or via "instance start"

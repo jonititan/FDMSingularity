@@ -2,4 +2,4 @@ export TZ=Europe/London
 export POSTGRES_USER=postgres
 export POSTGRES_PASSWORD=yourTopSecretPassword 
 export POSTGRES_DB=prefect
-export HOSTNAME=localhost
+
