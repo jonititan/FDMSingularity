@@ -94,6 +94,11 @@ To access the instance
   $ prefect server start
 
 ```
+7. Run test
+```
+  $ singularity run fdm.sif test.py
+```
+You will now be able to access the [prefect dashboard](https://docs.prefect.io/2.11.3/guides/host/)  and see the progress of your flow while it is running.
 
 ## Running on a HPC system with PBS
 Add the following to your PBS script.
