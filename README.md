@@ -89,7 +89,14 @@ To access the instance
   $ prefect server start
 
 ```
+7. Run test
+   
+In a seperate terminal you can then run you scripts as normal and the server instance will be [serving you a dashboard](https://docs.prefect.io/2.11.5/guides/host/) where you can monitor progress.
+```
+  $ singularity run fdm.sif test.py
+```
 
 
 Errata
+
 If you have GPU's you wish to include or your code needs them numba and dask-cuda are included in the fdm image and you can enable gpu pass through by including the --nv flag when you launch via "run" or via "instance start"
