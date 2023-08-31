@@ -11,6 +11,11 @@ To build the singularity images
 ```                                     
   $ sudo singularity build post.sif post.def 
 ```
+
+You will then need to transfer these images to wherever you want to run them.  
+
+
+
   
 ## To use as a single script
 1. Create the folders needed
