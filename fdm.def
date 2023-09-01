@@ -22,5 +22,5 @@ From: nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04
     exec /bin/bash -c ". /opt/conda/etc/profile.d/conda.sh; conda activate fdm; python $@"
 
 %startscript
-    exec /bin/bash -c ". /opt/conda/etc/profile.d/conda.sh; conda activate fdm"
+    exec /bin/bash -c ". /opt/conda/etc/profile.d/conda.sh; conda activate fdm;prefect server start"
 

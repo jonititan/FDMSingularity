@@ -83,21 +83,15 @@ To access the instance
 ```
   $ singularity shell -s /bin/bash instance://prefect-server
 
-```
-5. Activate the conda environment in the shell instance
-```
-  $ conda activate fdm
+It will automatically start the prefect server as the startscript in fdm.def has been updated to make that happen when the image is run as an instance.
 
 ```
-6. Start prefect
+5. Run test
 ```
-  $ prefect server start
+  $ singularity run --env PREFECT_API_URL="http://localhost:4200/api" fdm.sif test.py
+```
+This overrides the API URL environment variable and ensures it connects to the running instance we created in the previous step rather than starting its own.
 
-```
-7. Run test
-```
-  $ singularity run fdm.sif test.py
-```
 You will now be able to access the [prefect dashboard](https://docs.prefect.io/2.11.3/guides/host/)  and see the progress of your flow while it is running.
 
 ## Running on a HPC system with PBS
